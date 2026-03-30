@@ -1,0 +1,27 @@
+\contentsline {section}{\numberline {1}Executive Summary}{2}{section.1}%
+\contentsline {section}{\numberline {2}Technical Approach}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Data Layer}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Feature Engineering \& Selection}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Triple-Barrier Labeling}{3}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}Two-Stage Model with Validation-Based Tuning}{3}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}Validation Protocol (CPCV)}{3}{subsection.2.5}%
+\contentsline {section}{\numberline {3}Results}{3}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Classification \& Model Evaluation}{4}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Meta-Labeling \& Portfolio Construction}{4}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Portfolio Performance vs.\ S\&P 500}{4}{subsection.3.3}%
+\contentsline {section}{\numberline {4}Recommendation for Managers}{4}{section.4}%
+\contentsline {subsection}{\numberline {4.1}What the Strategy Does and How It Performed}{4}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}Built-In Risk Controls}{4}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}When It Works and When It Struggles}{4}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}Ongoing Governance}{5}{subsection.4.4}%
+\contentsline {section}{\numberline {A}Data Layer Evidence}{6}{appendix.A}%
+\contentsline {section}{\numberline {B}Exploratory Data Analysis}{8}{appendix.B}%
+\contentsline {section}{\numberline {C}Feature Engineering Evidence}{9}{appendix.C}%
+\contentsline {section}{\numberline {D}Triple-Barrier Labeling Evidence}{12}{appendix.D}%
+\contentsline {section}{\numberline {E}Two-Stage Model \& CPCV Validation}{12}{appendix.E}%
+\contentsline {section}{\numberline {F}Bet Sizing Grid Search}{15}{appendix.F}%
+\contentsline {section}{\numberline {G}Risk Neutralization}{15}{appendix.G}%
+\contentsline {section}{\numberline {H}Backtest \& Portfolio Performance}{15}{appendix.H}%
+\contentsline {section}{\numberline {I}SHAP Explainability \& Model Transparency}{17}{appendix.I}%
+\contentsline {section}{\numberline {J}Observation-Level Return Diagnostics}{18}{appendix.J}%
+\contentsline {section}{\numberline {K}Data Integrity Audit}{18}{appendix.K}%

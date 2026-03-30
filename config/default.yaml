@@ -1,0 +1,130 @@
+# ═══════════════════════════════════════════════════════════════
+# Cross-Sectional Stock Selection Framework – Master Config
+# ═══════════════════════════════════════════════════════════════
+
+universe:
+  index: "SP500"
+  start_date: "2010-01-01"
+  end_date: "2026-12-31"
+  test_start_date: "2025-01-01"     # train on everything before this, test after
+  min_history_days: 252          # require ≥1yr price history
+  min_market_cap_mm: 1000        # floor to avoid micro-caps
+
+data:
+  pricing_source: "yfinance"
+  fundamentals_source: "edgartools"
+  macro_source: "fred"
+  fred_api_key: "d829931a60b268dfb0ebbc59b77b7d5b"           # set via env FRED_API_KEY
+  fred_series:
+    - "VIXCLS"                   # VIX
+    - "T10Y2Y"                   # 10Y-2Y term spread
+    - "BAMLC0A4CBBB"             # BBB credit spread
+    - "ICSA"                     # initial claims
+    - "CPIAUCSL"                 # CPI
+
+features:
+  technical:
+    momentum_windows: [21, 63, 126, 252]   # 1M, 3M, 6M, 12M
+    skip_recent_month: true                 # Jegadeesh-Titman skip
+    volatility_windows: [20, 60]
+    ma_windows: [50, 200]
+    rsi_period: 14
+    bollinger_period: 20
+    bollinger_std: 2.0
+    amihud_window: 60
+    obv: true
+    garman_klass: true
+
+  fundamental:
+    valuation: ["pe_trailing", "pb", "ev_ebitda", "fcf_yield"]
+    profitability: ["roe", "roa", "gross_margin", "operating_margin", "roic"]
+    leverage: ["debt_equity", "interest_coverage", "current_ratio", "altman_z"]
+    growth: ["revenue_growth_yoy", "eps_growth_yoy", "earnings_surprise"]
+
+  preprocessing:
+    winsorize_sigma: 3.0
+    cross_sectional_zscore: true
+    fractional_differencing: true
+    fracdiff_confidence: 0.95    # ADF p-value threshold
+
+  dimensionality_reduction:
+    method: null                 # null | "pca" | "spca" | "autoencoder"
+    n_components: 15
+    autoencoder_layers: [64, 16, 64]
+
+labels:
+  method: "triple_barrier"
+  upper_barrier_mult: 2.0       # k_upper * daily_vol * sqrt(T)
+  lower_barrier_mult: 2.0       # k_lower (asymmetric tighter stops: try 1.5)
+  vertical_barrier_days: 43     
+  ewma_span: 50                 # span for EWMA volatility
+  min_return_threshold: 0.0     # discard vertical touches below this
+  discard_vertical: false       # if true, drop labels hitting only vertical
+
+modeling:
+  primary:
+    algorithm: "xgboost"
+    params:
+      objective: "binary:logistic"
+      eval_metric: "logloss"
+      max_depth: 4
+      min_child_weight: 75
+      subsample: 0.7
+      colsample_bytree: 0.6
+      learning_rate: 0.02
+      n_estimators: 1500
+      reg_alpha: 0.5
+      reg_lambda: 5.0
+      early_stopping_rounds: 50
+      verbosity: 0
+      tree_method: "hist"
+
+  meta:
+    algorithm: "random_forest"
+    params:
+      n_estimators: 500
+      max_depth: 6
+      min_samples_leaf: 50
+      max_features: "sqrt"
+      class_weight: "balanced_subsample"
+      n_jobs: -1
+
+  bet_sizing:
+    method: "half_kelly"           # "meta_prob" | "half_kelly" | "equal"
+    min_meta_probability: 0.51     # zero-out below this
+    max_position_weight: 0.05      # per-name cap (fraction of leg)
+
+validation:
+  method: "cpcv"
+  n_groups: 10
+  k_test_groups: 2
+  purge_window_days: null          # auto from triple barrier t_barrier
+  embargo_days: 5
+
+risk:
+  neutralization:
+    enabled: true
+    proportion: 1.0
+    exposures: ["sector", "log_market_cap", "beta"]
+
+portfolio:
+  long_only: true
+  long_leg: "top_decile"            # "top_decile" (top 10%) | "top_vigintile" (top 5%)
+  short_leg: "bottom_decile"        # ignored when long_only=true
+  weighting: "conviction"           # "conviction" | "equal"
+  max_single_name_pct: 0.10         # 10% cap — lets conviction differentiate
+  max_sector_pct: 0.30
+  dollar_neutral: false
+
+execution:
+  cost_bps_per_side: 7.5
+  market_impact_model: "sqrt"      # impact = sigma * sqrt(trade / ADV)
+  stagger_days: 5                  # spread rebalance over N days
+  max_monthly_turnover: 1.5        # flag if exceeded
+
+reporting:
+  shap_max_display: 15
+  pm_ledger_top_n: 50
+  regime_thresholds:
+    bull_6m_return: 0.10
+    bear_6m_return: -0.10

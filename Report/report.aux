@@ -1,0 +1,66 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Executive Summary}{2}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Technical Approach}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Data Layer}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Feature Engineering \& Selection}{2}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Triple-Barrier Labeling}{3}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Two-Stage Model with Validation-Based Tuning}{3}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Validation Protocol (CPCV)}{3}{subsection.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Results}{3}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Classification \& Model Evaluation}{4}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Meta-Labeling \& Portfolio Construction}{4}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Portfolio Performance vs.\ S\&P 500}{4}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Recommendation for Managers}{4}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}What the Strategy Does and How It Performed}{4}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Built-In Risk Controls}{4}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}When It Works and When It Struggles}{4}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Ongoing Governance}{5}{subsection.4.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A}Data Layer Evidence}{6}{appendix.A}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces S\&P 500 universe reconstitution. The 801 tickers confirm survivorship-bias-free coverage.}}{6}{table.caption.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Daily OHLCV pricing coverage.}}{6}{table.caption.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Point-in-time fundamental data from SEC EDGAR. Of 616 priced tickers, 615 had at least one SEC filing and 1 had no filing coverage.}}{6}{table.caption.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Five macro regime indicators sourced from FRED current-vintage series. These series are suitable for regime context, but strict point-in-time vintage reconstruction would require ALFRED or explicit release-vintage handling.}}{7}{table.caption.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Universe size statistics across 192 months.}}{7}{table.caption.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B}Exploratory Data Analysis}{8}{appendix.B}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Cross-sectional feature correlation matrix used in EDA. Strong positive clusters appear within momentum and mean-reversion families, while volatility features form a separate block, consistent with Table B.1.}}{8}{figure.caption.7}\protected@file@percent }
+\gdef \LT@i {\LT@entry 
+    {2}{21.99757pt}\LT@entry 
+    {2}{125.05574pt}\LT@entry 
+    {2}{81.92738pt}\LT@entry 
+    {2}{119.77925pt}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Feature-level missingness after pipeline preprocessing. Remaining missingness is low and concentrated in a few features; no feature exceeds the 50\% threshold.}}{9}{figure.caption.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces 10 feature pairs with $|r|>0.7$. Retained by design: XGBoost's split-based architecture arbitrates among correlated candidates at each node.}}{9}{table.caption.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {C}Feature Engineering Evidence}{9}{appendix.C}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces All 33 features across 6 academically grounded factor categories.}}{10}{table.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Pooled z-score statistics across all dates. Within any single date, std $= 1.0$ by construction; pooled values $< 1.0$ reflect time-varying cross-sectional shape.}}{11}{table.caption.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {D}Triple-Barrier Labeling Evidence}{12}{appendix.D}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Triple-barrier label distribution. 73.2\% hit the vertical barrier (timeout).}}{12}{table.caption.11}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Holding periods in calendar days. The vertical barrier is 43 trading days, which translates to $\approx $62 calendar days. Similar TP/SL durations validate the volatility-scaling calibration.}}{12}{table.caption.12}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Binary label balance and temporal positive-label rate. The aggregate split (60.5\% positive, 39.5\% negative) and the visible post-2022 softening are consistent with the train/test balance shift reported in Table E.5.}}{12}{figure.caption.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {E}Two-Stage Model \& CPCV Validation}{12}{appendix.E}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Three-way temporal split. The test set was never accessed until final evaluation.}}{13}{table.caption.14}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces CPCV results across 36 folds. Overfitting ratio: 1.14 (max/mean accuracy).}}{13}{table.caption.15}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Distribution of CPCV out-of-sample accuracy and AUC across 36 folds. Red dashed lines mark fold means (accuracy $\approx $0.539, AUC $\approx $0.500), matching Table E.2.}}{13}{figure.caption.16}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Test-set classification: XGBoost vs.\ stratified dummy baseline. The model's value lies not in ranking power (AUC $\approx $ 0.50) but in calibrated probabilities that enable effective bet sizing.}}{13}{table.caption.17}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces Calibration diagnostics. The model improves slightly versus a no-skill climatology baseline on Brier score, while low ECE indicates small average probability-frequency gaps. A reliability diagram is reported in the notebook calibration artifact and should be interpreted jointly with these scalar metrics.}}{13}{table.caption.18}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces The shift from 61.8\% to 53.1\% positive labels confirms a genuine regime change in 2025, explaining the Sharpe degradation from validation (1.06) to test (0.41).}}{14}{table.caption.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {F}Bet Sizing Grid Search}{15}{appendix.F}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {16}{\ignorespaces Top 5 configurations by Sharpe on validation. Row 1 was selected for the final test. The top two configurations are identical at the 5\% vs.\ 10\% cap, suggesting robust performance insensitive to the cap choice.}}{15}{table.caption.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {G}Risk Neutralization}{15}{appendix.G}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {17}{\ignorespaces Sector and size are fully neutralized. Beta neutralization was attempted but a residual loading persists ($R^2 = 0.004$), representing a small and economically negligible market-beta tilt.}}{15}{table.caption.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {H}Backtest \& Portfolio Performance}{15}{appendix.H}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {18}{\ignorespaces Complete out-of-sample performance, net of 7.5\,bps/side costs, t+1 staggered execution.}}{16}{table.caption.22}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {19}{\ignorespaces Regime-decomposed performance. The strategy captures strong alpha in trending markets and remains profitable in sideways conditions.}}{16}{table.caption.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {I}SHAP Explainability \& Model Transparency}{17}{appendix.I}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Global SHAP summary plot. The highest-impact features are led by revenue growth, net income growth, earnings yield, and volatility variables, consistent with the narrative in this section.}}{17}{figure.caption.24}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {20}{\ignorespaces Top-ranked recommendations from the most recent rebalance. Utilities concentration is mitigated by the 30\% sector cap in the portfolio construction layer.}}{17}{table.caption.26}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Local SHAP decomposition for a representative single-stock prediction. The plot shows additive feature contributions from the baseline score to the final model output.}}{18}{figure.caption.25}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {J}Observation-Level Return Diagnostics}{18}{appendix.J}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {K}Data Integrity Audit}{18}{appendix.K}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {21}{\ignorespaces Observation-level return diagnostics. Counts above separate the full scored universe from the non-zero-weight allocated subset to avoid trade-count ambiguity.}}{19}{table.caption.27}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {22}{\ignorespaces Four leakage fixes applied during development.}}{19}{table.caption.28}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {23}{\ignorespaces Complete list of pipeline safeguards.}}{19}{table.caption.29}\protected@file@percent }
+\gdef \@abspage@last{19}

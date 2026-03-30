@@ -1,0 +1,35 @@
+# ── Core scientific stack ──
+numpy
+pandas
+scipy
+statsmodels
+pyarrow
+
+# ── Data acquisition ──
+yfinance
+edgartools
+fredapi
+pandas-datareader
+
+# ── Machine learning ──
+scikit-learn
+xgboost
+shap
+
+# ── Visualization ──
+matplotlib
+seaborn
+
+# ── Configuration ──
+pyyaml
+
+# ── Notebook ──
+jupyter
+ipywidgets
+
+# ═══════════════════════════════════════════════════════════
+# OPTIONAL — install separately if available on your platform
+# ═══════════════════════════════════════════════════════════
+# TA-Lib        → requires C library first: brew install ta-lib
+# fracdiff      → may not have wheels for all Python/OS combos
+# mlfinlab      → now requires a paid license; we implement CPCV natively
