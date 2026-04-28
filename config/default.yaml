@@ -14,7 +14,7 @@ data:
   pricing_source: "yfinance"
   fundamentals_source: "edgartools"
   macro_source: "fred"
-  fred_api_key: "d829931a60b268dfb0ebbc59b77b7d5b"           # set via env FRED_API_KEY
+  fred_api_key: "FRED_API"           # set via env FRED_API_KEY
   fred_series:
     - "VIXCLS"                   # VIX
     - "T10Y2Y"                   # 10Y-2Y term spread
